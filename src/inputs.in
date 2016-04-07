@@ -1,0 +1,16 @@
+#grid dimension
+iDim            5
+jDim            5
+xmin            0
+xmax            10
+ymin            0
+ymax            10
+#boundary conditions
+uLeft           0.0
+vLeft           0.0
+uRight          0.0
+vRight          0.0
+uBottom         0.0
+vBottom         0.0
+uUp             10.0
+vUp             0.0
