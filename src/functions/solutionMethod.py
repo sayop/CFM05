@@ -1,4 +1,4 @@
-from variables import flowVars, domainVars, LBM
+from variables import *
 import numpy as np
 
 def nondimensionalize(inputDict):
@@ -37,7 +37,7 @@ def setupLBMparameters():
    # Setup weight coefficient, w_i
    LBM.wi = np.zeros(9) 
 
-   LBM.wi[0] = 0.0
+   LBM.wi[0] = 4.0 / 9.0
    LBM.wi[1] = 1.0 / 9.0
    LBM.wi[2] = 1.0 / 9.0
    LBM.wi[3] = 1.0 / 9.0
@@ -47,7 +47,36 @@ def setupLBMparameters():
    LBM.wi[7] = 1.0 / 36.0
    LBM.wi[8] = 1.0 / 36.0
 
+   # Setup streaming speed c = dx/dt
+   LBM.c = domainVars.dx / timeVars.dt
+   print "LBM streaming speed, c = ", LBM.c
+
+   # Setup speed of sound, Cs
+   LBM.cs = LBM.c / np.sqrt(3.0)
+   print "LBM speed of sound, Cs = ", LBM.cs
+
+   # Setup relaxation time, tau
+   LBM.tau = 0.5 * (6.0 * flowVars.nu / (LBM.c ** 2 * timeVars.dt) + 1.0)
+   print "LBM relaxation time, tau = ", LBM.tau
+
 def findEquilibriumDistributionFunction(imax,jmax):
-   LBM.fieq = np.zeros((9,imax,jmax))
-   for i in range(9):
-      LBM.fieq[
+   LBM.fieq = np.zeros((imax,jmax,9))
+   for n in range(9):
+       for j in range(jmax):
+          for i in range(imax):
+             Si = 3.0 * (LBM.ei[0][n] * flowVars.u[i,j] + LBM.ei[1][n] * flowVars.v[i,j]) / LBM.c
+             Si += 4.5 * ((LBM.ei[0][n] * flowVars.u[i,j] + LBM.ei[1][n] * flowVars.v[i,j]) / LBM.c ) ** 2
+             Si += -1.5 * (flowVars.u[i,j] ** 2 + flowVars.v[i,j] ** 2) / (LBM.c ** 2)
+             Si = Si * LBM.wi[n]
+
+             LBM.fieq[i,j][n] = flowVars.rho[i,j] * (LBM.wi[n] + Si)
+
+   
+def updateFlowVarsFromDistributionFuction(imax,jmax):
+
+   for j in range(jmax):
+      for i in range(imax):
+         flowVars.rho[i,j] = np.sum(LBM.fi[i,j])
+         flowVars.u[i,j] = np.sum(LBM.c * LBM.ei[0] * LBM.fi[i,j])
+         flowVars.v[i,j] = np.sum(LBM.c * LBM.ei[1] * LBM.fi[i,j])
+

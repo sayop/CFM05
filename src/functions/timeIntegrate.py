@@ -20,3 +20,8 @@ def timeIntegrate(inputDict):
 
    # Set initial distribution function at equilibrium
    findEquilibriumDistributionFunction(imax,jmax)
+
+   # Initialize distribution function with equilibrium distribution function
+   LBM.fi = LBM.fieq
+
+   updateFlowVarsFromDistributionFuction(imax,jmax)

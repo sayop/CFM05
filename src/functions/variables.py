@@ -21,6 +21,9 @@ class timeVars:
 
 class LBM:
 
+   c  = 0.0
+   cs = 0.0
+   tau = 0.0
    ei = [None] * 2
    wi = [None] * 1
    fi = [None] * 9
