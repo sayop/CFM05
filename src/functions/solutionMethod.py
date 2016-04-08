@@ -12,6 +12,18 @@ def nondimensionalize(inputDict):
    flowVars.u = flowVars.u / Uref
    flowVars.v = flowVars.v / Uref
 
+def dimensionalize(inputDict):
+   Lref = domainVars.Lref
+   domainVars.x = domainVars.x * Lref
+   domainVars.dx = domainVars.dx * Lref
+   domainVars.y = domainVars.y * Lref
+   domainVars.dy = domainVars.dy * Lref
+
+   Uref = flowVars.Uref
+   flowVars.u = flowVars.u * Uref
+   flowVars.v = flowVars.v * Uref
+
+
 def setupLBMparameters():
 
    # Setup streaming velocity unit vector: e_i
@@ -74,11 +86,14 @@ def findEquilibriumDistributionFunction(imax,jmax):
    
 def updateFlowVarsFromDistributionFuction(imax,jmax):
 
-   for j in range(jmax):
-      for i in range(imax):
+   for j in range(jmax-1):
+      if j == 0: continue
+      for i in range(imax-1):
+         if i == 0: continue
          flowVars.rho[i,j] = np.sum(LBM.fi[i,j])
          flowVars.u[i,j] = np.sum(LBM.c * LBM.ei[0] * LBM.fi[i,j])
          flowVars.v[i,j] = np.sum(LBM.c * LBM.ei[1] * LBM.fi[i,j])
+
 
 def streaming(imax,jmax):
 

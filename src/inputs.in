@@ -1,6 +1,6 @@
 #grid dimension
-iDim            5
-jDim            5
+iDim            20
+jDim            20
 xmin            0
 xmax            10
 ymin            0
@@ -18,7 +18,7 @@ vUp             0.0
 nu              1.0
 rho		1.0
 #simulation setup
-maxIter         1
-dt		0.01
+maxIter         2000
+dt		0.00005
 #Post-Process
-nIterWrite      100
+nIterWrite      200
