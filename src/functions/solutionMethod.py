@@ -20,19 +20,19 @@ def setupLBMparameters():
    # y component of e_i vector
    LBM.ei[1] = np.zeros(9)
 
-   LBM.ei[0][1] = 1.0
-   LBM.ei[0][3] = -1.0
-   LBM.ei[0][5] = 1.0
-   LBM.ei[0][6] = -1.0
-   LBM.ei[0][7] = -1.0
-   LBM.ei[0][8] = 1.0
+   LBM.ei[0][1] = 1
+   LBM.ei[0][3] = -1
+   LBM.ei[0][5] = 1
+   LBM.ei[0][6] = -1
+   LBM.ei[0][7] = -1
+   LBM.ei[0][8] = 1
 
-   LBM.ei[1][2] = 1.0
-   LBM.ei[1][4] = -1.0
-   LBM.ei[1][5] = 1.0
-   LBM.ei[1][6] = 1.0
-   LBM.ei[1][7] = -1.0
-   LBM.ei[1][8] = -1.0
+   LBM.ei[1][2] = 1
+   LBM.ei[1][4] = -1
+   LBM.ei[1][5] = 1
+   LBM.ei[1][6] = 1
+   LBM.ei[1][7] = -1
+   LBM.ei[1][8] = -1
 
    # Setup weight coefficient, w_i
    LBM.wi = np.zeros(9) 
@@ -80,3 +80,27 @@ def updateFlowVarsFromDistributionFuction(imax,jmax):
          flowVars.u[i,j] = np.sum(LBM.c * LBM.ei[0] * LBM.fi[i,j])
          flowVars.v[i,j] = np.sum(LBM.c * LBM.ei[1] * LBM.fi[i,j])
 
+def streaming(imax,jmax):
+
+   ftmp = np.zeros((imax,jmax,9))
+
+   for j in range(jmax):
+      for i in range(imax):
+         for n in range(9):
+            inew = int(i + LBM.ei[0][n])
+            jnew = int(j + LBM.ei[1][n])
+            nnew = n
+            if inew < 0 or inew > (imax-1) or jnew < 0 or jnew > (jmax-1):
+               inew = i
+               jnew = j
+               if n == 1: nnew = 3
+               if n == 2: nnew = 4
+               if n == 3: nnew = 1
+               if n == 4: nnew = 2
+               if n == 5: nnew = 7
+               if n == 6: nnew = 8
+               if n == 7: nnew = 5
+               if n == 8: nnew = 6
+            ftmp[inew,jnew,nnew] = LBM.fi[i,j][n]
+
+   LBM.fi = ftmp 
