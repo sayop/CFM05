@@ -86,25 +86,39 @@ def findEquilibriumDistributionFunction(imax,jmax):
    
 def updateFlowVarsFromDistributionFuction(imax,jmax):
 
-   for j in range(jmax-1):
-      if j == 0: continue
-      for i in range(imax-1):
-         if i == 0: continue
+   for j in range(jmax):
+      for i in range(imax):
          flowVars.rho[i,j] = np.sum(LBM.fi[i,j])
-         flowVars.u[i,j] = np.sum(LBM.c * LBM.ei[0] * LBM.fi[i,j])
-         flowVars.v[i,j] = np.sum(LBM.c * LBM.ei[1] * LBM.fi[i,j])
+         if i == 0 or i == (imax-1) or j == 0 or j == (jmax-1): continue
+         flowVars.u[i,j] = np.sum(LBM.c * LBM.ei[0] * LBM.fi[i,j]) / flowVars.rho[i,j]
+         flowVars.v[i,j] = np.sum(LBM.c * LBM.ei[1] * LBM.fi[i,j]) / flowVars.rho[i,j]
 
 
 def streaming(imax,jmax):
 
-   ftmp = np.zeros((imax,jmax,9))
+   #ftmp = np.zeros((imax,jmax,9))
+   ftmp = LBM.fi
 
+   # first, move streaming particles only if there is a lattice to receive the particle.
+   # Otherwise, let it empty and it will be treated properly with bounce-back scheme later.
    for j in range(jmax):
       for i in range(imax):
          for n in range(9):
             inew = int(i + LBM.ei[0][n])
             jnew = int(j + LBM.ei[1][n])
-            nnew = n
+            # if the following criteria is met, it means no lattice to receive the particle.
+            # then leave it blank.
+            if inew < 0 or inew > (imax-1) or jnew < 0 or jnew > (jmax-1): continue
+            ftmp[inew,jnew,n] = LBM.fi[i,j][n]
+
+   # Boundary conditions based on bounce-back scheme
+   for j in range(jmax):
+      for i in range(imax):
+         if (j > 0 and j < (jmax-1)) and (i > 0 and i < (imax-1)): continue
+         for n in range(9):
+            inew = int(i + LBM.ei[0][n])
+            jnew = int(j + LBM.ei[1][n])
+            # Following statement only sorts boundary lattices out.
             if inew < 0 or inew > (imax-1) or jnew < 0 or jnew > (jmax-1):
                inew = i
                jnew = j
@@ -116,6 +130,15 @@ def streaming(imax,jmax):
                if n == 6: nnew = 8
                if n == 7: nnew = 5
                if n == 8: nnew = 6
-            ftmp[inew,jnew,nnew] = LBM.fi[i,j][n]
+               ftmp[inew,jnew,nnew] = ftmp[i,j][n]
+
+
+   # moving lid
+   j = jmax-1
+   for i in range(imax):
+      rho = 1.0 / (1.0 + flowVars.v[i,j]) * (ftmp[i,j][0] + ftmp[i,j][1] + ftmp[i,j][3] + 2.0 * (ftmp[i,j][2] + ftmp[i,j][2] + ftmp[i,j][5]))
+      ftmp[i,j][4] += 1.5 * rho * flowVars.v[i,j]
+      ftmp[i,j][7] += 0.5 * (ftmp[i,j][1] - ftmp[i,j][3]) - 1.0/6.0 * rho * flowVars.v[i,j] - 0.5 * rho * flowVars.u[i,j]
+      ftmp[i,j][8] += 0.5 * (ftmp[i,j][3] - ftmp[i,j][1]) + 0.5 * rho * flowVars.u[i,j] - 1.0/6.0 * rho * flowVars.v[i,j]
 
    LBM.fi = ftmp 

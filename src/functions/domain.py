@@ -14,6 +14,8 @@ def createDomain(inputDict):
 
    dx = (xmax - xmin) / (imax - 1)
    dy = (ymax - ymin) / (jmax - 1)
+   print 'dx = ', dx
+   print 'dy = ', dy
    for i in range(imax):
       x[i] = xmin + dx * i
 

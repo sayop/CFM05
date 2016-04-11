@@ -15,7 +15,7 @@ def timeIntegrate(inputDict):
    start = time.clock()
 
    # Non-dimensionalize flow and domain variables
-   nondimensionalize(inputDict)
+   #nondimensionalize(inputDict)
 
    # setup streaming velocity vector e_i
    setupLBMparameters()
@@ -39,6 +39,10 @@ def timeIntegrate(inputDict):
       nIter += 1
       t += timeVars.dt
 
+      # Streaming step
+      streaming(imax,jmax)
+
+
       # compute fi_eq
       findEquilibriumDistributionFunction(imax,jmax)
 
@@ -47,17 +51,15 @@ def timeIntegrate(inputDict):
       LBM.fi += (LBM.fieq - LBM.fi) / LBM.tau
 
 
-      # Streaming step
-      streaming(imax,jmax)
 
       # compute macroscopic density and velocity components
       updateFlowVarsFromDistributionFuction(imax,jmax)
 
       if (nIter % nIterWrite == 0):
-         dimensionalize(inputDict)
+         #dimensionalize(inputDict)
          plotStreamLine(domainVars.x, domainVars.y, flowVars.u, flowVars.v, nIter)
          plotContour(domainVars.x, domainVars.y, flowVars.u, flowVars.v, nIter)
-         nondimensionalize(inputDict)
+         #nondimensionalize(inputDict)
 
  
       print "|- nIter = %s" % nIter, ", t = %.6f" % t
@@ -69,14 +71,14 @@ def timeIntegrate(inputDict):
    print "## Elapsed time: ", elapsedTime
 
    # Dimensionalize flow and domain variables
-   dimensionalize(inputDict)
+   #dimensionalize(inputDict)
 
    # plot streamline of velocity
    plotStreamLine(domainVars.x, domainVars.y, flowVars.u, flowVars.v, nIter)
 
    # trace center-line data to be compared to the Ghia's paper data
-   nondimensionalize(inputDict)
+   #nondimensionalize(inputDict)
    traceCenterLineData('x', flowVars.v, 'v-velocity_in_x.csv')
    traceCenterLineData('y', flowVars.u, 'u-velocity_in_y.csv')
-   dimensionalize(inputDict)
+   #dimensionalize(inputDict)
 
