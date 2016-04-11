@@ -21,10 +21,11 @@ def timeIntegrate(inputDict):
    setupLBMparameters()
 
    # Set initial distribution function at equilibrium
-   findEquilibriumDistributionFunction(imax,jmax)
+   #findEquilibriumDistributionFunction(imax,jmax)
 
    # Initialize distribution function with equilibrium distribution function
-   LBM.fi = LBM.fieq
+   #LBM.fi = LBM.fieq
+   LBM.fi = np.ones((imax,jmax,9))
 
    #
    # Time Marching:
