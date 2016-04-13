@@ -18,8 +18,7 @@ vUp             0.0
 Re              100.0
 rho		1.0
 #simulation setup
-maxIter         500000
+maxIter         10000
 dt		1.0
-residualMin     0.001
 #Post-Process
 nIterWrite      100
