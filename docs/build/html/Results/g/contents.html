@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Problem1 - g &mdash; Lattice Boltzmann Method Solver 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Lattice Boltzmann Method Solver 0.0.1 documentation" href="../../index.html" />
+    <link rel="up" title="Results" href="../index.html" />
+    <link rel="prev" title="Problem1 - f" href="../f/contents.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../f/contents.html" title="Problem1 - f"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Lattice Boltzmann Method Solver 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Results</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="problem1-g">
+<h1>Problem1 - g<a class="headerlink" href="#problem1-g" title="Permalink to this headline">¶</a></h1>
+<p>Compare the results obtained in homework 3,4, and 5. Discuss the advangates and disadvantages of the methods.</p>
+<p>In this test, Re=100 case has been chosen for the desired comparison because this case doesn&#8217;t not require impractically higher grid resolution such that the test can be performed very efficiently. The selected grid resolution is 60x60 and three different solution methods were tested under the same condition.</p>
+<a class="reference internal image-reference" href="../../_images/u-velocity_large.png"><img alt="../../_images/u-velocity_large.png" src="../../_images/u-velocity_large.png" style="width: 40%;" /></a>
+<a class="reference internal image-reference" href="../../_images/u-velocity_magnified.png"><img alt="../../_images/u-velocity_magnified.png" src="../../_images/u-velocity_magnified.png" style="width: 40%;" /></a>
+<p>&lt;Comparison on the calculated u-velocity along the centerline with different solution method: bottom image is the magnified one for noticing the discrepancy&gt;</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="21%" />
+<col width="22%" />
+<col width="21%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&nbsp;</th>
+<th class="head" colspan="2">LBM             | Projection method</th>
+<th class="head">ACM</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>RMS of u-velocity</td>
+<td colspan="2">0.00413982355618 | 0.00857537642521</td>
+<td>0.00132103968968</td>
+</tr>
+<tr class="row-odd"><td>Iterations for convergence</td>
+<td>4889</td>
+<td>3496</td>
+<td>37017</td>
+</tr>
+<tr class="row-even"><td>Compute time for convergence</td>
+<td>784.86</td>
+<td>4145.3</td>
+<td>1711.31</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../f/contents.html"
+                        title="previous chapter">Problem1 - f</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/Results/g/contents.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../f/contents.html" title="Problem1 - f"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Lattice Boltzmann Method Solver 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Results</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Sayop Kim.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
