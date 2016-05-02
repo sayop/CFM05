@@ -24,7 +24,10 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="Lattice Boltzmann Method Solver 0.0.1 documentation" href="../../index.html" /> 
+    <link rel="top" title="Lattice Boltzmann Method Solver 0.0.1 documentation" href="../../index.html" />
+    <link rel="up" title="Results" href="../index.html" />
+    <link rel="next" title="Problem1 - b" href="../b/contents.html" />
+    <link rel="prev" title="Results" href="../index.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -33,7 +36,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Lattice Boltzmann Method Solver 0.0.1 documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="../b/contents.html" title="Problem1 - b"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Results"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Lattice Boltzmann Method Solver 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Results</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -45,6 +55,23 @@
   <div class="section" id="problem1-a">
 <h1>Problem1 - a<a class="headerlink" href="#problem1-a" title="Permalink to this headline">¶</a></h1>
 <p>Describe the essential steps of the solution method. Include the discretized equations and implementation of boundary conditions.</p>
+<p>This project aims to use Lattice Boltzmann Method for solving the lid driven flow problem and assess its prediction accuracy and several numerical issues as stated in the problem description. In this project, D2Q9 latice is employed to describe the stream the distribution fuctions along the specified directions. The directions in which 9-bit lattice BGK model evoloves defines following 9 discrete velocities:</p>
+<div class="math">
+\[\begin{split}e_{i} = \left\{\begin{matrix} (0,0) &amp; i=0\;\;\;\;\;\;\;\;\;\; &amp; \\  (\text{cos}[(i-1)\pi/2],\text{sin}[(i-1)\pi/2]) &amp; i=1,2,3,4 &amp; \\ \sqrt{2}(\text{cos}[(i-5)\pi/2 + \pi/4], \text{sin}[(i-5)\pi/2 + \pi/4]) &amp; i=5,6,7,8 &amp; \end{matrix}\right.\end{split}\]</div>
+<a class="reference internal image-reference" href="../../_images/d2q9.png"><img alt="../../_images/d2q9.png" class="align-center" src="../../_images/d2q9.png" style="width: 30%;" /></a>
+<p>Along the defined direction, 9 independent fluid particles are moved and re-located then update their distribution function in time. The evolution equation of the density distribution function is integrated in time:</p>
+<div class="math">
+\[f_{i}(x_{i}+ce_{i}\Delta t, t+\Delta t) - f_{i}(x_{i}, t) = - \frac{1}{\tau} \left [ f_{i}(x_{i},t) - f_{i}^{\text{eq}}(x_{i},t) \right ]\]</div>
+<p>where <span class="math">\(c=\Delta x / \Delta t\)</span>, and <span class="math">\(\Delta x\)</span> and <span class="math">\(\Delta t\)</span> are the lattice spacing and the time step, respectively. Here, <span class="math">\(\tau\)</span> is the dimensionless relaxation time that approximates the temporal rate at which instantaneous distribution function evolves and transitions to the equilibrium states. And the <span class="math">\(f_{i}^{\text{eq}}\)</span> expresses the equilibrium density function, which is determined by:</p>
+<div class="math">
+\[f_{i}^{\text{eq}}(x_{i},t) = \omega_{i}\rho + \rho s_{i}(u_{i}(x_{i},t))\]</div>
+<p>where</p>
+<div class="math">
+\[s_{i} (u_{i}) = \omega_{i} \left [ e\frac{(e_{i}u_{i})}{c} + 4.5 \frac{(e_{i}u_{i})^{2}}{c^{2}} - 1.5 \frac{u_{i}u_{i}}{c^{2}}\right ]\]</div>
+<p>with the weight coefficient:</p>
+<div class="math">
+\[\begin{split}\omega_{i} = \left\{\begin{matrix} \frac{4}{9} &amp; i = 0\;\;\;\;\;\;\;\;\;\; \\  \frac{1}{9} &amp; i = 1,2,3,4 \\  \frac{1}{36} &amp; i = 5,6,7,8 \end{matrix}\right.\end{split}\]</div>
+<p>After updating the distribution function, we are then to find fluid density and velocity from the integrated distribution function by assuming the relationship between the distribution function and macroscopic fluid properties:</p>
 </div>
 
 
@@ -53,6 +80,12 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../index.html"
+                        title="previous chapter">Results</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../b/contents.html"
+                        title="next chapter">Problem1 - b</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -83,7 +116,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Lattice Boltzmann Method Solver 0.0.1 documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="../b/contents.html" title="Problem1 - b"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Results"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Lattice Boltzmann Method Solver 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Results</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

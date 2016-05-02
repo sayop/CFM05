@@ -1,0 +1,15 @@
+=============
+ Problem1 - a
+=============
+
+Describe the essential steps of the solution method. Include the discretized equations and implementation of boundary conditions.
+
+This project aims to use Lattice Boltzmann Method for solving the lid driven flow problem and assess its prediction accuracy and several numerical issues as stated in the problem description. In this project, D2Q9 latice is employed to describe the stream the distribution fuctions along the specified directions. The directions in which 9-bit lattice BGK model evoloves defines following 9 discrete velocities:
+
+.. math::
+
+   \vec{e}_{i} = \left\{\begin{matrix} (0,0) & i=0\;\;\;\;\;\;\;\;\;\; & \\  (\text{cos}[(i-1)\pi/2],sin[(i-1)\pi/2]) & i=1,2,3,4 & \\ \sqrt{2}(cos[(i-5)\pi/2 + \pi/4], sin[(i-5)\pi/2 + \pi/4]) & i=5,6,7,8 & \end{matrix}\right.
+
+Along the defined direction, 9 independent fluid particles are moved and re-located then update their distribution function in time. The evolution equation of the density distribution function is integrated in time:
+
+
