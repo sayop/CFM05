@@ -73,8 +73,10 @@
 <blockquote>
 <div><ul class="simple">
 <li><strong>Observation</strong><ul>
-<li>Denser grid resolution tends to produce better results. The resolved u and v velocities look closer to the reference data.</li>
-<li>Compared to 10x10 case, the streamline produced with denser grid resolution looks more physically reasonable.</li>
+<li>Coarser grid is horrible at achieving well-defined velocity field due to numerical errors and unstable solution.</li>
+<li>Despite this instability and error, the qualitative flow pattern is well resolved.</li>
+<li>The possible explanation of this inaccurate solution may be made with an arguement that particle streaming should be made across lattices closely apart each other.</li>
+<li>Far distance between neighboring lattices may not represent proper particle streaming process.</li>
 </ul>
 </li>
 </ul>
@@ -91,6 +93,15 @@
 <p>&lt;Centerline u-velocity compared with Ghia&#8217;s numerically resolved data&gt;</p>
 <a class="reference internal image-reference" href="../../_images/vVel_40x40.png"><img alt="../../_images/vVel_40x40.png" src="../../_images/vVel_40x40.png" style="width: 40%;" /></a>
 <p>&lt;Centerline v-velocity compared with Ghia&#8217;s numerically resolved data&gt;</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>Observation</strong><ul>
+<li>Grid resolution for this problem should be made up with 40x40 at least in order to have well-resolved flow properties with reasonable accuracy.</li>
+<li>The simulation data is in a good agreement with the reference data produced by Ghia et al.</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -129,6 +140,15 @@
 <p>&lt;Centerline u-velocity&gt;</p>
 <a class="reference internal image-reference" href="../../_images/vVel_160x160.png"><img alt="../../_images/vVel_160x160.png" src="../../_images/vVel_160x160.png" style="width: 40%;" /></a>
 <p>&lt;Centerline v-velocity&gt;</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>Observation</strong><ul>
+<li>As compared to previous condition of Re=100, the higher Reynolds number lid moving speed makes more strong vorticity on the bottom corner.</li>
+<li>The centered vortext relocates its position further down and so it moveds toward the center of domain.</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
 </div>
 </div>
 

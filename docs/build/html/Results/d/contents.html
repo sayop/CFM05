@@ -26,7 +26,8 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="Lattice Boltzmann Method Solver 0.0.1 documentation" href="../../index.html" />
     <link rel="up" title="Results" href="../index.html" />
-    <link rel="prev" title="Problem1 - b, c" href="../bc/contents.html" /> 
+    <link rel="next" title="Problem1 - e" href="../e/contents.html" />
+    <link rel="prev" title="Problem1 - c" href="../c/contents.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -36,7 +37,10 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../bc/contents.html" title="Problem1 - b, c"
+          <a href="../e/contents.html" title="Problem1 - e"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../c/contents.html" title="Problem1 - c"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Lattice Boltzmann Method Solver 0.0.1 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Results</a> &raquo;</li> 
@@ -58,6 +62,8 @@
 <a class="reference internal image-reference" href="../../_images/RMSerr.png"><img alt="../../_images/RMSerr.png" src="../../_images/RMSerr.png" style="width: 50%;" /></a>
 </li>
 </ul>
+<p>Overall, the accurate solution can be achieved with finer grid spacing setup. It means again that the smaller grid size contributes to less numerical error. As stated in the previous section, smaller grid spacing is more favorable condition for LBM because original Boltzmann equation was derived in molecular scales of length and time and so it can be more reliable when it is employed in the small spaced lattice configuration.</p>
+<p>In addition, the RMS error seems to be stablized as the grid resolution goes beyond 60 or more. Since the current Python script running for LBM is not such efficient, all the grid spacing analysis and fully resolved solution were discussed based on 60x60 resolution.</p>
 </div>
 
 
@@ -67,8 +73,11 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../bc/contents.html"
-                        title="previous chapter">Problem1 - b, c</a></p>
+  <p class="topless"><a href="../c/contents.html"
+                        title="previous chapter">Problem1 - c</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../e/contents.html"
+                        title="next chapter">Problem1 - e</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -100,7 +109,10 @@
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../bc/contents.html" title="Problem1 - b, c"
+          <a href="../e/contents.html" title="Problem1 - e"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../c/contents.html" title="Problem1 - c"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Lattice Boltzmann Method Solver 0.0.1 documentation</a> &raquo;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Results</a> &raquo;</li> 

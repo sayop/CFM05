@@ -1,10 +1,10 @@
 #grid dimension
-iDim            41
-jDim            41
+iDim            21
+jDim            21
 xmin            0
-xmax            40.0
+xmax            20.0
 ymin            0
-ymax            40.0
+ymax            20.0
 #boundary conditions
 uLeft           0.0
 vLeft           0.0

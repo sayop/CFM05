@@ -13,3 +13,7 @@ In order to evaluate the numerical accuracy, the numerically resolved LBM data i
 
   .. image:: ./images/RMSerr.png
      :width: 50%
+
+Overall, the accurate solution can be achieved with finer grid spacing setup. It means again that the smaller grid size contributes to less numerical error. As stated in the previous section, smaller grid spacing is more favorable condition for LBM because original Boltzmann equation was derived in molecular scales of length and time and so it can be more reliable when it is employed in the small spaced lattice configuration.
+
+In addition, the RMS error seems to be stablized as the grid resolution goes beyond 60 or more. Since the current Python script running for LBM is not such efficient, all the grid spacing analysis and fully resolved solution were discussed based on 60x60 resolution.

@@ -51,12 +51,21 @@
   <div class="section" id="problem1-g">
 <h1>Problem1 - g<a class="headerlink" href="#problem1-g" title="Permalink to this headline">¶</a></h1>
 <p>Compare the results obtained in homework 3,4, and 5. Discuss the advangates and disadvantages of the methods.</p>
-<p>In this test, Re=100 case has been chosen for the desired comparison because this case doesn&#8217;t not require impractically higher grid resolution such that the test can be performed very efficiently. The selected grid resolution is 60x60 and three different solution methods were tested under the same condition.</p>
+<p>In this test, Re=100 case has been chosen for the desired comparison because this case doesn&#8217;t not require impractically higher grid resolution such that the test can be performed very efficiently. The selected grid resolution is 60x60 and three different solution methods were tested under the same condition. All the simulation for these solution methods were conducted with the same convergence rate of 0.01% for u-velocity residual.</p>
 <a class="reference internal image-reference" href="../../_images/u-velocity_large.png"><img alt="../../_images/u-velocity_large.png" src="../../_images/u-velocity_large.png" style="width: 40%;" /></a>
 <a class="reference internal image-reference" href="../../_images/u-velocity_magnified.png"><img alt="../../_images/u-velocity_magnified.png" src="../../_images/u-velocity_magnified.png" style="width: 40%;" /></a>
 <p>&lt;Comparison on the calculated u-velocity along the centerline with different solution method: bottom image is the magnified one for noticing the discrepancy&gt;</p>
 <blockquote>
-<div><table border="1" class="docutils">
+<div><ul class="simple">
+<li><strong>Observations</strong><ul>
+<li>Overally all the solution methods were successfully running to achieve the reliable flow behaviors.</li>
+<li>However, there are noticeable discrepancy when there are compared to each other: Projection method is the worst at accuracy.</li>
+<li>It seems that more iterations may be needed to have accurate solution for Projection method.</li>
+<li>ACM gives the most accurate solution. However, in order to assess the solution method&#8217;s accuracy, further investigation needs to be done for reliable assessment.</li>
+</ul>
+</li>
+</ul>
+<table border="1" class="docutils">
 <colgroup>
 <col width="35%" />
 <col width="21%" />
@@ -65,13 +74,15 @@
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">&nbsp;</th>
-<th class="head" colspan="2">LBM             | Projection method</th>
+<th class="head">LBM</th>
+<th class="head">Projection method</th>
 <th class="head">ACM</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>RMS of u-velocity</td>
-<td colspan="2">0.00413982355618 | 0.00857537642521</td>
+<td>0.00413982355618</td>
+<td>0.00857537642521</td>
 <td>0.00132103968968</td>
 </tr>
 <tr class="row-odd"><td>Iterations for convergence</td>
@@ -87,6 +98,8 @@
 </tbody>
 </table>
 </div></blockquote>
+<p>Above table describes the computational performance among different solution methods. Here the projection method again turns out to be worst case in terms of computational time. This is because the projection method is to solve Laplacian equation for pressure correction terms which is the most expensive part in the whole process. Given grid resolution, the projection method requires more than 150 iterations for SOR method in the pressure correction step.</p>
+<p>On the otherhand, LBM was the best way to have accurate solution with less computational effort. However, this comparison may not be reliable because the computational time is also very strongly senstive to how the efficiently and effectively simulation code is made.</p>
 </div>
 
 

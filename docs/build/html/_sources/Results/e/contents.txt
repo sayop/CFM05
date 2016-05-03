@@ -18,3 +18,5 @@ The simulation for different grid resolutions were conducted with consistent con
 
   .. image:: ./images/computeTime.png
      :width: 50%
+
+As observed in the previous homework problem, above observations are very typical in the fact that more iterations and more computational time are required for the higher grid resolutions. Specifically, in such a high resolution case, temporal updated quantity in distribution function is too small to rapidly approach to the steady solution, and it leads to more required iterations and again more computational time.

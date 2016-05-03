@@ -33,9 +33,10 @@ In this test, the lid cavity's velocity is set to make the Reynolds number set t
 
   - **Observation**
 
-    - Denser grid resolution tends to produce better results. The resolved u and v velocities look closer to the reference data.
-    - Compared to 10x10 case, the streamline produced with denser grid resolution looks more physically reasonable.
-
+    - Coarser grid is horrible at achieving well-defined velocity field due to numerical errors and unstable solution.
+    - Despite this instability and error, the qualitative flow pattern is well resolved.
+    - The possible explanation of this inaccurate solution may be made with an arguement that particle streaming should be made across lattices closely apart each other. 
+    - Far distance between neighboring lattices may not represent proper particle streaming process.
 
 
  
@@ -57,6 +58,12 @@ In this test, the lid cavity's velocity is set to make the Reynolds number set t
    :width: 40%
 
 <Centerline v-velocity compared with Ghia's numerically resolved data>
+
+
+  - **Observation**
+
+    - Grid resolution for this problem should be made up with 40x40 at least in order to have well-resolved flow properties with reasonable accuracy.
+    - The simulation data is in a good agreement with the reference data produced by Ghia et al.
 
 |
 
@@ -111,3 +118,8 @@ The chosen grid resolution is 160x160 in x and y directions. The computation tim
    :width: 40%
 
 <Centerline v-velocity>
+
+  - **Observation**
+
+    - As compared to previous condition of Re=100, the higher Reynolds number lid moving speed makes more strong vorticity on the bottom corner.
+    - The centered vortext relocates its position further down and so it moveds toward the center of domain.

@@ -55,6 +55,10 @@
   <div class="section" id="problem1-c">
 <h1>Problem1 - c<a class="headerlink" href="#problem1-c" title="Permalink to this headline">¶</a></h1>
 <p>Examine the effect of the relaxation time <span class="math">\(\tau\)</span> and the Mach number on method stability using your simulations, and compare your results to the stability criteria. Discuss how these parameters relate to the required grid size and physical time step size.</p>
+<p>Given equation as stated in the previous section, the relaxation time is strongly coupled with kinematic viscosity <span class="math">\(\nu\)</span>.</p>
+<div class="math">
+\[\nu = \frac{2\tau - 1}{6} \Delta x\]</div>
+<p>In this simulation, grid spacing and time step are consistently set to unity for various grid resolution conditions in order to avoid complexity that may arise with non-unity <span class="math">\(\Delta t\)</span> and <span class="math">\(\Delta x\)</span>. Therefore, the grid spacing doesn&#8217;t change the numerics of <span class="math">\(\Delta\)</span>. Instead, to be consistent with Re=100, kinematic viscosity <span class="math">\(\nu\)</span> is to be changed, resulting in change of <span class="math">\(\tau\)</span>. The following figure illustrates the variable relaxation time allows the stable solution with different grid spacing.</p>
 <a class="reference internal image-reference" href="../../_images/tau.png"><img alt="../../_images/tau.png" src="../../_images/tau.png" style="width: 50%;" /></a>
 </div>
 

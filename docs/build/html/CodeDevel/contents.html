@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Code Instruction &mdash; Lattice Boltzmann Method Solver 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Lattice Boltzmann Method Solver 0.0.1 documentation" href="../index.html" />
+    <link rel="next" title="Results" href="../Results/index.html" />
+    <link rel="prev" title="Computational Fluid Mechanics: Fifth Computer Project" href="../index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../Results/index.html" title="Results"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Computational Fluid Mechanics: Fifth Computer Project"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Lattice Boltzmann Method Solver 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="code-instruction">
+<h1>Code Instruction<a class="headerlink" href="#code-instruction" title="Permalink to this headline">¶</a></h1>
+<p>The present project is aimed to develop a computer program for solving a steady solution with Lattice Boltzmann Method (LBM). The code being used for answering all the question here is written with Python language. This program is to run with simple command:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ python main.py
+</pre></div>
+</div>
+<div class="section" id="quick-instruction-for-running-the-simulation">
+<h2>Quick instruction for running the simulation<a class="headerlink" href="#quick-instruction-for-running-the-simulation" title="Permalink to this headline">¶</a></h2>
+<p>The Python code used for this project can be cloned from <em>github.com</em> repository:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ git clone https://github.com/sayop/CFM05
+</pre></div>
+</div>
+<p>You can also see the code directly by visiting the website: <a class="reference external" href="https://github.com/sayop/CFM05">https://github.com/sayop/CFM05</a> If you clone the code, you will see the following set of files and directories:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ sayop@reynolds:~$ ls CFM05/
+docs  README.md  src
+</pre></div>
+</div>
+<p><em>docs</em> contains the document files set for the current project using <em>Sphinx</em> software. This <em>pdf</em> document is online available at: <a class="reference external" href="http://cfm05-gatech.readthedocs.org">http://cfm05-gatech.readthedocs.org</a>. The Python script for this simulation is stored in <em>src</em> folder.</p>
+<p>Before running the simulation, you need to open the file named <em>input.in</em> using editor for example, VI on unix system:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ vi input.in
+</pre></div>
+</div>
+<p>Then, you should be able to see the following set of simulation parameters:</p>
+<div class="highlight-python"><div class="highlight"><pre>#grid dimension
+iDim            61
+jDim            61
+xmin            0
+xmax            60
+ymin            0
+ymax            60
+#boundary conditions
+uLeft           0.0
+vLeft           0.0
+uRight          0.0
+vRight          0.0
+uBottom         0.0
+vBottom         0.0
+uUp             10.0
+vUp             0.0
+# fluid kinematic properties
+nu              1.0
+pInit           10.0
+#simulation setup
+pCorr           1
+alpha           1.0
+pResidual       0.01
+maxIter         1
+Courant         0.5
+dtInit          0.0001
+Beta            0.5
+residualMin     0.00005
+#Post-Process
+nIterWrite      100
+</pre></div>
+</div>
+<p>The parameter&#8217;s name above will literally tell you what every single variables indicates in the simulation. For the post-processing as requested in this project, <em>nIterWrite</em> will write a solution plot and CSV file at speicifed interval of time integration number.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Code Instruction</a><ul>
+<li><a class="reference internal" href="#quick-instruction-for-running-the-simulation">Quick instruction for running the simulation</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../index.html"
+                        title="previous chapter">Computational Fluid Mechanics: Fifth Computer Project</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../Results/index.html"
+                        title="next chapter">Results</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/CodeDevel/contents.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../Results/index.html" title="Results"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Computational Fluid Mechanics: Fifth Computer Project"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Lattice Boltzmann Method Solver 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Sayop Kim.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
